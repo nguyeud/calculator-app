@@ -1,0 +1,92 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* BODY */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+main {
+    width: 400px;
+    height: 660px;
+    border: 2px solid #333333;
+    border-radius: 12px;
+    background-color: #FFEBF9;
+}
+footer {
+    text-align: center;
+    font-size: 14px;
+    margin: 20px;
+}
+
+/* DISPLAY */
+#title {
+    display: flex;
+    justify-content: space-between;
+    width: 350px;
+    height: 35px;
+    margin: 20px auto 14px auto;
+    font-size: 24px;
+}
+#solar {
+    width: 165px;
+    background-color: #333;
+    border-radius: 4px;;
+}
+#display {
+    width: 350px;
+    height: 140px;
+    margin: 20px auto 14px auto;
+    border: 2px solid #333333;
+    border-radius: 4px;
+    background-color: #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+#history {
+    font-size: 20px;
+    padding-right: 20px;
+    padding-top: 15px;
+    height: 50px;
+}
+#input {
+    font-size: 60px;
+    padding-right: 20px;
+}
+#utilities, .numButton {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 14px;
+}
+#numButtons {
+    display: flex;
+    flex-direction: column;
+}
+
+/* BUTTONS */
+.utility {
+    width: 165px;
+    height: 70px;
+    background-color: #FFC4ED;
+    font-size: 24px;
+    border-radius: 4px;;
+}
+.btn {
+    height: 70px;
+    width: 70px;
+    background-color: #FFD8F3;
+    font-size: 24px;
+    border-radius: 4px;
+}
+.utility:hover, .btn:hover {
+    background-color: #FFA2E2;
+}

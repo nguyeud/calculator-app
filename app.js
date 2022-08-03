@@ -17,13 +17,17 @@ let secondOp = "";
 numbers.forEach(number => {
     number.addEventListener("click", e => {
         if(firstOp === "") { // Read first number if no operator set yet
-            firstNum += e.target.innerText;
-            input.innerText = firstNum;
-            history.innerText = "";
+            if(firstNum.length < 8) {
+                firstNum += e.target.innerText;
+                input.innerText = firstNum;
+                history.innerText = "";
+            }
         } else { // Read second number
-            secondNum += e.target.innerText;
-            input.innerText = secondNum;
-            history.innerText = firstNum + " " + firstOp;
+            if(secondNum.length < 8) {
+                secondNum += e.target.innerText;
+                input.innerText = secondNum;
+                history.innerText = firstNum + " " + firstOp;
+            }
         };
     });
 });

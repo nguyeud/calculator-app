@@ -4,6 +4,8 @@ A simple calculator application you can use to add, subtract, multiply, and divi
 * HTML
 * CSS
 * JavaScript
+
+## Frameworks
 * jQuery
 
  ![Screenshot](calculator.png)

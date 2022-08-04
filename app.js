@@ -34,7 +34,7 @@ numbers.forEach(number => {
 
 operands.forEach(op => {
     op.addEventListener("click", e => {
-        if(firstNum !== "") {
+        if(firstNum !== "" && firstOp == "") {
             if(firstOp !== ""  && firstOp !== "=") {
                 secondOp = firstOp;
                 firstOp = e.target.innerText;

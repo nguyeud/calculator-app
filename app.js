@@ -46,22 +46,74 @@ operands.forEach(op => {
                 } else if(secondNum !== "" && secondOp == "×") {
                     displayValue = (parseFloat(firstNum) * parseFloat(secondNum)).toFixed(2);
                 } else if(secondNum !== "" && secondOp == "÷") {
-                    if(parseFloat(secondNum).toFixed(2) == 0.00) {
+                    if(parseFloat(secondNum) == 0) {
                         alert("Cannot divide by zero!")
                         secondNum = "";
                         input.innerText = "";
                     } else {
-                        displayValue = (parseFloat(firstNum) / parseFloat(secondNum)).toFixed(2);
+                        if((parseFloat(firstNum) / parseFloat(secondNum)) < 0.1) { // allow of notation
+                            displayValue = (parseFloat(firstNum) / parseFloat(secondNum));
+                        } else {
+                            displayValue = (parseFloat(firstNum) / parseFloat(secondNum)).toFixed(2);
+                        }
                     }
                 };
+                console.log(displayValue);
                 let index = displayValue.toString().indexOf(".");
+                // if a decimal is present...
                 if(index !== -1) {
-                    if(displayValue.toString().includes("00") == true) {
+                    // if numbers are integers, remove extra zeros
+                    if(displayValue.toString().includes(".00") == true && displayValue.length !== undefined) {
                         displayValue = displayValue.slice(0, index);
-                    } else if(displayValue.toString().includes("0", displayValue.toString().length-1)) {
-                        displayValue = displayValue.slice(0, index+2);
                     } 
-                };
+                    // notation for numbers over 8 char in length
+                    if(displayValue.length > 8) {
+                        let multiplier = "";
+                        for(let i = 0; i < displayValue.length - 1; i++) {
+                            multiplier += "0";
+                        }
+                        let num = displayValue / parseInt("1" + multiplier);
+                        let remainder = num.toString().slice(0, 5);
+                        let remainderNum = parseFloat(remainder);
+                        if(remainder[4] >= 5) {
+                            remainderNum += 0.01
+                            remainder = remainderNum.toString().slice(0, 4);
+                        } else {
+                            remainder = remainderNum.toString().slice(0, 4);
+                        }
+                        let notation = displayValue.length - 1;
+                        displayValue = remainder.toString() + "e+" + notation.toString();
+                    }  else if(displayValue.length == undefined && displayValue.toString().indexOf("e") == -1) { // notation for numbers < 0.01
+                        let i = displayValue;
+                        let notation = 0;
+                        while(i < 1) {
+                            if(displayValue.toString()[0] == "0") {
+                                i *= 10;
+                                notation++;
+                            }
+                        }
+                        let remainder = i.toString().slice(0, 5);
+                        let remainderNum = parseFloat(remainder);
+                        if(remainder[4] >= 5) {
+                            remainderNum += 0.01
+                            remainder = remainderNum.toString().slice(0, 4);
+                        } else {
+                            remainder = remainderNum.toString().slice(0, 4);
+                        }
+                        displayValue = remainder.toString() + "e-" + notation.toString();
+                    } else if(displayValue.length == undefined && displayValue.toString().indexOf("e") !== -1) { // numbers that have been notated in JS
+                        let remainder = displayValue.toString().slice(0, 5);
+                        let remainderNum = parseFloat(remainder);
+                        if(remainder[4] >= 5) {
+                            remainderNum += 0.01
+                            remainder = remainderNum.toString().slice(0, 4);
+                        } else {
+                            remainder = remainderNum.toString().slice(0, 4);
+                        }
+                        let notation = displayValue.toString().slice(displayValue.toString().length - 3, displayValue.toString().length);
+                        displayValue = remainder + notation;
+                    }
+                } 
                 input.innerText = displayValue.toString();
                 firstNum = displayValue.toString();
                 secondNum = "";

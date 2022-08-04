@@ -4,3 +4,5 @@
 * CSS
 * JavaScript
 * jQuery
+
+ ![Screenshot](calculator.png)

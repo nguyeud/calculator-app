@@ -34,8 +34,8 @@ numbers.forEach(number => {
 
 operands.forEach(op => {
     op.addEventListener("click", e => {
-        if(firstNum !== "" && firstOp == "") {
-            if(firstOp !== ""  && firstOp !== "=") {
+        if(firstNum !== "") {
+            if(firstOp !== "") {
                 secondOp = firstOp;
                 firstOp = e.target.innerText;
                 history.innerText = firstNum + " " + secondOp + " " + secondNum;

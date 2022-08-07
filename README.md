@@ -1,5 +1,7 @@
+From [The Odin Project](https://www.theodinproject.com/).
 # Calculator App
 A simple calculator application you can use to add, subtract, multiply, and divide.
+
 ## Languages
 * HTML
 * CSS
